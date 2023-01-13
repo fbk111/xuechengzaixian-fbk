@@ -68,6 +68,7 @@
                 <artifactId>mapstruct-jdk8</artifactId>
                 <version>${org.mapstruct.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
@@ -111,10 +112,22 @@
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
             <!-- mybatis plus 代码生成器 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
 
@@ -184,69 +197,69 @@
         </dependencies>
 
     </dependencyManagement>
-    <build>
-        <finalName>${project.name}</finalName>
-        <!--编译打包过虑配置-->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <plugins>
-            <!--打包插件-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-            </plugin>
+<!--    <build>-->
+<!--        <finalName>${project.name}</finalName>-->
+<!--        &lt;!&ndash;编译打包过虑配置&ndash;&gt;-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--                <includes>-->
+<!--                    <include>**/*</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/main/java</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--        <plugins>-->
+<!--            &lt;!&ndash;打包插件&ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <version>${spring-boot.version}</version>-->
+<!--            </plugin>-->
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <!--指定项目源码jdk的版本-->
-                    <source>1.8</source>
-                    <!--指定项目编译后的jdk的版本-->
-                    <target>1.8</target>
-                    <!--配置注解预编译-->
-                    <annotationProcessorPaths>
-                        <!--                        <path>
-                                                    <groupId>org.mapstruct</groupId>
-                                                    <artifactId>mapstruct-processor</artifactId>
-                                                    <version>${org.mapstruct.version}</version>
-                                                </path>-->
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${org.projectlombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-
-<!--            &lt;!&ndash;责处理项目资源文件并拷贝到输出目录，如果有额外的资源文件目录则需要配置&ndash;&gt;-->
 <!--            <plugin>-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-resources-plugin</artifactId>-->
-<!--                <version>3.8.5</version>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.8.1</version>-->
 <!--                <configuration>-->
-<!--                    <encoding>utf-8</encoding>-->
-<!--                    &lt;!&ndash;使用默认分隔符，resource中可以使用分割符定义过虑的路径&ndash;&gt;-->
-<!--                    <useDefaultDelimiters>true</useDefaultDelimiters>-->
+<!--                    &lt;!&ndash;指定项目源码jdk的版本&ndash;&gt;-->
+<!--                    <source>1.8</source>-->
+<!--                    &lt;!&ndash;指定项目编译后的jdk的版本&ndash;&gt;-->
+<!--                    <target>1.8</target>-->
+<!--                    &lt;!&ndash;配置注解预编译&ndash;&gt;-->
+<!--                    <annotationProcessorPaths>-->
+<!--                        &lt;!&ndash;                        <path>-->
+<!--                                                    <groupId>org.mapstruct</groupId>-->
+<!--                                                    <artifactId>mapstruct-processor</artifactId>-->
+<!--                                                    <version>${org.mapstruct.version}</version>-->
+<!--                                                </path>&ndash;&gt;-->
+<!--                        <path>-->
+<!--                            <groupId>org.projectlombok</groupId>-->
+<!--                            <artifactId>lombok</artifactId>-->
+<!--                            <version>${org.projectlombok.version}</version>-->
+<!--                        </path>-->
+<!--                    </annotationProcessorPaths>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
-        </plugins>
-    </build>
+
+<!--&lt;!&ndash;            &lt;!&ndash;责处理项目资源文件并拷贝到输出目录，如果有额外的资源文件目录则需要配置&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-resources-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>3.8.5</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <encoding>utf-8</encoding>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash;使用默认分隔符，resource中可以使用分割符定义过虑的路径&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <useDefaultDelimiters>true</useDefaultDelimiters>&ndash;&gt;-->
+<!--&lt;!&ndash;                </configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>
