@@ -12,8 +12,11 @@ import com.fbk.content.service.CourseBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.annotation.Resources;
 import java.util.List;
 
 /**
@@ -28,6 +31,7 @@ import java.util.List;
 public class CourseBaseServiceImpl extends ServiceImpl<CourseBaseMapper, CourseBase> implements CourseBaseService {
 
     @Autowired
+
     private CourseBaseMapper courseBaseMapper;
 
     /**
@@ -41,6 +45,7 @@ public class CourseBaseServiceImpl extends ServiceImpl<CourseBaseMapper, CourseB
         LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(StringUtils.isNotEmpty(courseParamsDto.getCourseName()),CourseBase::getName,courseParamsDto.getCourseName());
         queryWrapper.eq(StringUtils.isNotEmpty(courseParamsDto.getAuditStatus()),CourseBase::getAuditStatus,courseParamsDto.getAuditStatus());
+        queryWrapper.eq(StringUtils.isNotEmpty(courseParamsDto.getPublishStatus()),CourseBase::getAuditStatus,courseParamsDto.getPublishStatus());
         //创建page需要no和size
         Page<CourseBase> page = new Page<>(pageParams.getPageNo(), pageParams.getPageSize());
         //selectPage需要new Page和queryWrapper

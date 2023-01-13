@@ -1,0 +1,8 @@
+### 课程查询接口
+POST {{content_host}}/course/list?pageNo=1&pageSize=2
+Content-Type: application/json
+{
+ "auditStatues":"202004",
+"courseName":"",
+"publishStatues":""
+}
