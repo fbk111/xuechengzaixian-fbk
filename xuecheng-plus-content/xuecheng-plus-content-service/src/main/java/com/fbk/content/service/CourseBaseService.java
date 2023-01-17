@@ -3,6 +3,8 @@ package com.fbk.content.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fbk.base.model.PageParams;
 import com.fbk.base.model.PageResult;
+import com.fbk.content.model.dto.AddCourseDto;
+import com.fbk.content.model.dto.CourseBaseInfoDto;
 import com.fbk.content.model.dto.QueryCourseParamsDto;
 import com.fbk.content.model.po.CourseBase;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,5 +25,13 @@ public interface CourseBaseService extends IService<CourseBase> {
      * @return
      */
     PageResult<CourseBase> list(PageParams pageParams, QueryCourseParamsDto courseParamsDto);
+
+    /**
+     *
+     * @param companyId 培训结构id
+     * @param addCourseDto 添加课程信息
+     * @return
+     */
+    CourseBaseInfoDto createCourseBase(Long companyId,AddCourseDto addCourseDto);
 
 }

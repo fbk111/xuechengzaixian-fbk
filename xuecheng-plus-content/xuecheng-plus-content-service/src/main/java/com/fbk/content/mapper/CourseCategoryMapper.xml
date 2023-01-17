@@ -18,4 +18,7 @@
         id, name, label, parentid, is_show, orderby, is_leaf
     </sql>
 
+    <select id="selectTreeNodes" resultType="com.fbk.content.model.dto.CourseCategoryTreeDto">
+
+    </select>
 </mapper>

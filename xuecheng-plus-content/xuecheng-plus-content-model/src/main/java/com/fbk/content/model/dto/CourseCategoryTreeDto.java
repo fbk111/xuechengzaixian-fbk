@@ -3,6 +3,7 @@ package com.fbk.content.model.dto;
 import com.fbk.content.model.po.CourseCategory;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,5 +14,5 @@ import java.util.List;
 @Data
 public class CourseCategoryTreeDto extends CourseCategory {
 
-    List<CourseCategory> childrenTreeNodes;
+    List<CourseCategoryTreeDto> childrenTreeNodes;
 }
